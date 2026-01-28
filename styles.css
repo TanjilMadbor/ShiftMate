@@ -15,11 +15,12 @@ body{
 .container{
     border: 2px solid black;
     border-radius: 4%;
-    padding: 6vh 6vw;
-    margin : 6vh 6vw;
+    padding: 10vh 10vw;
+    margin : 1vh 1vw;
     background-color: #BADFDB;
     
 }
+
 
 .container h2{
     margin-top: 0px;
@@ -27,14 +28,19 @@ body{
     font-size: 32px;
     font-weight: bold;
     color:black;
+    text-align: center;
 }
 
 .container div {
-    margin-bottom: 2vh;
+    margin-bottom: 4vh;
 }
 
 .container label{
     font-weight: bold;
+    font-size: larger;
+}
+.container input, select {
+    font-size: larger;
 }
 
 .container p{
@@ -56,17 +62,10 @@ body{
 }
 
 
-
-
-
 #btn:hover {
   background: #3e68f0;
   transform: translateY(-2px);
 }
-
-
-
-
 
 #timesheets{
     border: 1.9px solid black;
