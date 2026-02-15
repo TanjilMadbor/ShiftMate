@@ -69,7 +69,7 @@ body{
 
 }
 
-#btn, #register_button{
+#btn, #register_button, #login_btn {
     border: 1.9px solid black;
     border-radius: 4px;
     background-color: #FFA4A4;
@@ -84,7 +84,7 @@ body{
 }
 
 
-#btn:hover ,#register_button:hover{
+#btn:hover ,#register_button:hover, #login_btn:hover {
   background: #3e68f0;
   transform: translateY(-2px);
 }
