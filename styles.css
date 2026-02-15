@@ -1,22 +1,27 @@
 *{
     padding:0px;
     margin:0px;
+    box-sizing: border-box;
 }
 
 body{
     background-color: #FCF9EA;
     font-family: system-ui,sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url("https://cdn.sanity.io/images/r115idoc/production/bfd15faf602af6796083a15a95846cb5be71e2e2-1999x1126.jpg?w=3840&q=75&fit=clip&auto=format")
+    background-image: url("/images/image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 .container{
     border: 2px solid black;
     border-radius: 4%;
-    padding: 10vh 10vw;
+    padding: 100px;
     margin : 1vh 1vw;
     background-color: #BADFDB;
     
@@ -25,7 +30,7 @@ body{
 
 .container h2{
     margin-top: 0px;
-    padding-bottom: 2vh;
+    padding-bottom: 1 rem;
     font-size: 32px;
     font-weight: bold;
     color:black;
@@ -33,52 +38,114 @@ body{
 }
 
 .container div {
-    margin-bottom: 4vh;
+    margin-bottom: 1 rem;
 }
 
 .container label{
+    display: inline-block;
+    margin-bottom:  10px;
+    margin-top: 5px;
     font-weight: bold;
-    font-size: larger;
+    font-size: 1 rem;
+    padding-left: 5px;
 }
-.container input, select {
-    font-size: larger;
+.container input, .container select {
+    
+    font-size: 1rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #c9ced6;
+    border-radius: 10px;
+    width: 100%;
 }
-
+.container option:hover {
+    background: aqua;
+}
 .container p{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px 0;
 
 
 }
 
-#btn{
+#btn, #register_button{
     border: 1.9px solid black;
     border-radius: 4px;
     background-color: #FFA4A4;
     font-weight: bold;
     color: #0f131e;
     padding: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    margin-top: 5px;
+    
 }
 
 
-#btn:hover {
+#btn:hover ,#register_button:hover{
   background: #3e68f0;
   transform: translateY(-2px);
 }
 
-#timesheets{
-    border: 1.9px solid black;
-    border-radius: 4px;
-    background-color: #FFBDBD;
+
+#nav_bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #BADFDB;
+  backdrop-filter: saturate(140%) blur(6px);
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  padding: 0.6rem 1rem;
+  box-shadow: 0 6px 18px rgba(10, 201, 33, 0.12);
+  border-radius: 5px;
+}
+#nav_bar ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1100px;
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+#nav_bar li { display: inline-flex; }
+#nav_bar a {
+  color: black;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+#nav_bar a:hover { 
+    background: rgba(227, 12, 12, 0.89); 
+    color: #f3f4f6;
+
+}
+.active {
+    background: #3e68f0;
+    color: #f3f4f6;
     font-weight: bold;
-    color: rgb(23, 74, 168);
+}
+@media (max-width: 600px) {
+  #nav_bar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
-
-#timesheets:hover{
-    background: whitesmoke;
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #0f131e;
 }
 
+#message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}

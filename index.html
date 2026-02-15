@@ -8,13 +8,26 @@
     <title>Shift Mate</title>
 </head>
 <body>
+    <header>
+        <h1>Welcome to Shift Mate!</h1>
+        <p>Your one-stop solution for efficient shift management and seamless timesheet tracking.</p>
+    </header>
+
+    <nav id="nav_bar">
+        <ul>
+            <li><a href="" class=active >Home</a></li>
+            <li><a href="registeration.html">Registration</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="shift_record.html">Shift Record</a></li>
+        </ul>
+    </nav>
     
     <div class="container">
 
-        <h2>Shift Mate</h2>
+        <h2>Shift Entry Portal</h2>
         <form id="form" novalidate>
         <div>
-            <label for="day">Day: </label> <br>
+            <label for="date">Day: </label> <br>
             <input type="date" id="date" placeholder="Enter the Day" required>
         </div>
         <div>
@@ -34,8 +47,7 @@
                 <option value="week02">Week 02</option>
             </select>
         </div>
-        <p id="btn">Submit</p>
-        <p id="timesheets">Shift Timesheets</p>
+        <button type="button" id="btn">Submit</button>
         </form>
 
     </div>

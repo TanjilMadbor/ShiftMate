@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Registration</title>
+</head>
+<body>
+    <nav id="nav_bar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="registeration.html" class=active >Registration</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="shift_record.html">Shift Record</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+
+        <h2>Register Here!</h2>
+        <form id="form" novalidate>
+        <div>
+            <label for="name">Name: </label> <br>
+            <input type="text" id="name" placeholder="Enter your Name" required>
+        </div>
+        <div>
+            <label for="Employee_id">Employee ID: </label> <br>
+            <input type="text" id="employee_id" placeholder="Enter your Employee ID" required> 
+        </div>
+        <div>
+            <label for="Password">Password: </label> <br>
+            <input type="password" id="password" placeholder="Enter your Password" required> 
+        </div>
+        <div>
+            <label for="Confirm_Password">Confirm Password: </label> <br>
+            <input type="password" id="confirm_password" placeholder="Confirm your Password" required> 
+        </div>
+        <button type="button" id="register_button">Register</button>
+
+        <p id="message"></p>
+        
+        </form>
+
+    </div>
+    <script src="registeration.js" type="module"></script>
+    
+</body>
+</html>
