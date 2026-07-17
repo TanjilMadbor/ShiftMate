@@ -1,22 +1,13 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { db } from "./firebase-config.js";
 import {
-  getFirestore,
   doc,
   setDoc,
   getDoc
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+import { generateSalt, hashPassword } from "./password.js";
+import { hideRegistrationTabIfLoggedIn } from "./auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCwvOjWA-CivNe0hz1KSQ-QRW3eb2HQJRk",
-  authDomain: "shiftmate-a01cb.firebaseapp.com",
-  projectId: "shiftmate-a01cb",
-  storageBucket: "shiftmate-a01cb.firebasestorage.app",
-  messagingSenderId: "814946501150",
-  appId: "1:814946501150:web:964b414e1a721642a9640f"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+hideRegistrationTabIfLoggedIn();
 
 document.getElementById("register_button").addEventListener("click", async (event) => {
 
@@ -45,16 +36,19 @@ document.getElementById("register_button").addEventListener("click", async (even
       return;
     }
 
+    const passwordSalt = generateSalt();
+    const passwordHash = await hashPassword(password, passwordSalt);
+
     await setDoc(userRef, {
       name,
       employeeId,
-      password,
+      passwordSalt,
+      passwordHash,
       createdAt: new Date()
     });
 
     document.getElementById("message").innerText = "Registration successful";
     document.getElementById("form").reset();
-    
 
   } catch (err) {
     document.getElementById("message").innerText = err.message;
