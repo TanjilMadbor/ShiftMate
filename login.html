@@ -7,32 +7,37 @@
     <title>Login</title>
 </head>
 <body>
-    
-<nav id="nav_bar">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li id="nav_registration"><a href="registeration.html">Registration</a></li>
-    <li><a href="login.html" class=active>Login</a></li>
-    <li><a href="shift_record.html">Shift Record</a></li>
-  </ul>
-</nav>
-<div class="container">
-    <h2>Login Here!</h2>
-    <form id="form" novalidate>
-        <div>
-            <label for="employee_id">Employee ID: </label> <br>
-            <input type="text" id="employee_id" placeholder="Enter your Employee ID" required> 
-        </div>
-        <div>
-            <label for="password">Password: </label> <br>
-            <input type="password" id="password" placeholder="Enter your Password" required> 
-        </div>
-        <button type="button" id="login_btn">Login</button>
+    <header>
+        <h1>Welcome to Shift Mate!</h1>
+        <p>Your one-stop solution for efficient shift management and seamless timesheet tracking.</p>
+    </header>
 
-        <p id="message"></p>
-    </form>
-</div>
-<script src="js/login.js" type="module"></script>
+    
+    <nav id="nav_bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li id="nav_registration"><a href="registeration.html">Registration</a></li>
+        <li><a href="login.html" class=active>Login</a></li>
+        <li><a href="shift_record.html">Shift Record</a></li>
+    </ul>
+    </nav>
+    <div class="container">
+        <h2>Login Here!</h2>
+        <form id="form" novalidate>
+            <div>
+                <label for="employee_id">Employee ID: </label> <br>
+                <input type="text" id="employee_id" placeholder="Enter your Employee ID" required> 
+            </div>
+            <div>
+                <label for="password">Password: </label> <br>
+                <input type="password" id="password" placeholder="Enter your Password" required> 
+            </div>
+            <button type="button" id="login_btn">Login</button>
+
+            <p id="message"></p>
+        </form>
+    </div>
+    <script src="js/login.js" type="module"></script>
 
 </body>
   
