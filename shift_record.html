@@ -7,36 +7,40 @@
     <title>Shift Record</title>
 </head>
 <body>
+    <header>
+        <h1>Welcome to Shift Mate!</h1>
+        <p>Your one-stop solution for efficient shift management and seamless timesheet tracking.</p>
+    </header>
 
-<nav id="nav_bar">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li id="nav_registration"><a href="registeration.html">Registration</a></li>
-    <li><a href="login.html" >Login</a></li>
-    <li><a href="shift_record.html" class=active>Shift Record</a></li>
-  </ul>
-</nav>
-<div class="container">
-    <h2>Past Shift Records</h2>
-    <p id="user_status"></p>
+    <nav id="nav_bar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li id="nav_registration"><a href="registeration.html">Registration</a></li>
+        <li><a href="login.html" >Login</a></li>
+        <li><a href="shift_record.html" class=active>Shift Record</a></li>
+    </ul>
+    </nav>
+    <div class="container">
+        <h2>Past Shift Records</h2>
+        <p id="user_status"></p>
 
-    <div class="table-wrapper">
-        <table class="shift-table">
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Week Type</th>
-            </tr>
-            </thead>
-            <tbody id="shift_table_body"></tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="shift-table">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Week Type</th>
+                </tr>
+                </thead>
+                <tbody id="shift_table_body"></tbody>
+            </table>
+        </div>
+
+        <button type="button" id="load_more_btn" class="load-more-btn" hidden>See More</button>
+        <p id="message"></p>
     </div>
-
-    <button type="button" id="load_more_btn" class="load-more-btn" hidden>See More</button>
-    <p id="message"></p>
-</div>
 <script src="js/shift_record.js" type="module"></script>
 
 </body>
