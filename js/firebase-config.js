@@ -2,12 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCwvOjWA-CivNe0hz1KSQ-QRW3eb2HQJRk",
-  authDomain: "shiftmate-a01cb.firebaseapp.com",
-  projectId: "shiftmate-a01cb",
-  storageBucket: "shiftmate-a01cb.firebasestorage.app",
-  messagingSenderId: "814946501150",
-  appId: "1:814946501150:web:964b414e1a721642a9640f"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
