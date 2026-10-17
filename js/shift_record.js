@@ -12,26 +12,34 @@ import { requireLogin, renderUserStatus, hideRegistrationTabIfLoggedIn } from ".
 const PAGE_SIZE = 5;
 
 const user = requireLogin();
-let lastVisible = null;
+
+// pageCursors[i] is the last doc before page i (null for the first page)
+const pageCursors = [null];
+let currentPage = 0;
 
 if (user) {
   renderUserStatus("user_status");
   hideRegistrationTabIfLoggedIn();
-  document.getElementById("load_more_btn").addEventListener("click", loadMoreShifts);
-  loadMoreShifts();
+  document.getElementById("next_btn").addEventListener("click", () => loadPage(currentPage + 1));
+  document.getElementById("prev_btn").addEventListener("click", () => loadPage(currentPage - 1));
+  loadPage(0);
 }
 
-async function loadMoreShifts() {
+async function loadPage(pageIndex) {
   const tbody = document.getElementById("shift_table_body");
   const messageEl = document.getElementById("message");
-  const loadMoreBtn = document.getElementById("load_more_btn");
-  const isFirstPage = lastVisible === null;
+  const prevBtn = document.getElementById("prev_btn");
+  const nextBtn = document.getElementById("next_btn");
+  const pageLabel = document.getElementById("page_label");
 
-  loadMoreBtn.disabled = true;
+  prevBtn.disabled = true;
+  nextBtn.disabled = true;
 
-  const constraints = [orderBy("createdAt", "desc"), limit(PAGE_SIZE)];
-  if (lastVisible) {
-    constraints.push(startAfter(lastVisible));
+  // Fetch one extra doc to know whether an older page exists
+  const constraints = [orderBy("createdAt", "desc"), limit(PAGE_SIZE + 1)];
+  const cursor = pageCursors[pageIndex];
+  if (cursor) {
+    constraints.push(startAfter(cursor));
   }
 
   try {
@@ -39,15 +47,21 @@ async function loadMoreShifts() {
     const snapshot = await getDocs(shiftsQuery);
 
     if (snapshot.empty) {
-      loadMoreBtn.hidden = true;
-      messageEl.textContent = isFirstPage ? "No shift records found." : "No more shift records.";
+      tbody.replaceChildren();
+      prevBtn.hidden = true;
+      nextBtn.hidden = true;
+      pageLabel.textContent = "";
+      messageEl.textContent = "No shift records found.";
       return;
     }
 
-    messageEl.textContent = "";
-    lastVisible = snapshot.docs[snapshot.docs.length - 1];
+    const docs = snapshot.docs.slice(0, PAGE_SIZE);
+    const hasNext = snapshot.size > PAGE_SIZE;
 
-    snapshot.forEach((docSnap) => {
+    messageEl.textContent = "";
+    tbody.replaceChildren();
+
+    docs.forEach((docSnap) => {
       const shift = docSnap.data();
       const row = document.createElement("tr");
 
@@ -60,11 +74,19 @@ async function loadMoreShifts() {
       tbody.appendChild(row);
     });
 
-    loadMoreBtn.hidden = snapshot.size < PAGE_SIZE;
+    if (hasNext) {
+      pageCursors[pageIndex + 1] = docs[docs.length - 1];
+    }
+    currentPage = pageIndex;
+
+    prevBtn.hidden = pageIndex === 0;
+    nextBtn.hidden = !hasNext;
+    pageLabel.textContent = pageIndex === 0 && !hasNext ? "" : `Page ${pageIndex + 1}`;
 
   } catch (err) {
     messageEl.textContent = err.message;
   } finally {
-    loadMoreBtn.disabled = false;
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
   }
 }

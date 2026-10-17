@@ -195,7 +195,15 @@ header {
     border-bottom: none;
 }
 
-.load-more-btn {
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.page-btn {
     border: 1.9px solid black;
     border-radius: 4px;
     background-color: #FFA4A4;
@@ -203,17 +211,20 @@ header {
     color: #0f131e;
     padding: 8px 18px;
     cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
 }
 
-.load-more-btn:hover {
+.page-btn:hover:not(:disabled) {
     background: #3e68f0;
     color: #f3f4f6;
     transform: translateY(-2px);
 }
 
-.load-more-btn[hidden] {
+.page-btn:disabled {
+    cursor: wait;
+    opacity: 0.6;
+}
+
+.page-btn[hidden] {
     display: none;
 }
 
