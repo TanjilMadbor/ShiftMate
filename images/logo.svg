@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ShiftMate logo">
+  <!-- Tile -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#BADFDB" stroke="#0f131e" stroke-width="3"/>
+  <!-- Clock face -->
+  <circle cx="29" cy="29" r="17" fill="#FCF9EA" stroke="#0f131e" stroke-width="3"/>
+  <path d="M29 15.5v3M15.5 29h3M39.5 29h3M29 39.5v3" stroke="#0f131e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Clock hands -->
+  <path d="M29 29V20M29 29l6 4" fill="none" stroke="#3e68f0" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="29" cy="29" r="2.2" fill="#0f131e"/>
+  <!-- Shift logged badge -->
+  <circle cx="46" cy="46" r="11" fill="#FFA4A4" stroke="#0f131e" stroke-width="3"/>
+  <path d="M41 46.5l3.5 3.5 6.5-7" fill="none" stroke="#0f131e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
