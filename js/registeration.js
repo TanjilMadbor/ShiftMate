@@ -2,7 +2,11 @@ import { db } from "./firebase-config.js";
 import {
   doc,
   setDoc,
-  getDoc
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 import { generateSalt, hashPassword } from "./password.js";
 import { hideRegistrationTabIfLoggedIn } from "./auth.js";
@@ -36,11 +40,25 @@ document.getElementById("register_button").addEventListener("click", async (even
       return;
     }
 
+    // Case-insensitive match via nameLower; the exact-name query catches users created before nameLower existed
+    const nameLower = name.toLowerCase();
+    const usersRef = collection(db, "users");
+    const [lowerMatch, exactMatch] = await Promise.all([
+      getDocs(query(usersRef, where("nameLower", "==", nameLower))),
+      getDocs(query(usersRef, where("name", "==", name)))
+    ]);
+
+    if (!lowerMatch.empty || !exactMatch.empty) {
+      document.getElementById("message").innerText = "Name already exists";
+      return;
+    }
+
     const passwordSalt = generateSalt();
     const passwordHash = await hashPassword(password, passwordSalt);
 
     await setDoc(userRef, {
       name,
+      nameLower,
       employeeId,
       passwordSalt,
       passwordHash,
